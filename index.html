@@ -12,8 +12,62 @@
     />
   </head>
   <body>
+    <!-- Loader -->
     <div class="loader hidden">
       <img src="rocket.svg" alt="Rocket Loading Ani" />
+    </div>
+    <!-- Container -->
+    <div class="container">
+      <!-- Navigation -->
+      <div class="navigation-container">
+        <span class="background"></span>
+        <!-- Results Nav -->
+        <span class="navigation-items" id="resultsNav">
+          <h3 class="clickable">Favorites</h3>
+          <h3>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h3>
+          <h3 class="clickable">Load More</h3>
+        </span>
+        <!-- Favorites Nav -->
+        <span class="navigation-item hidden" id="favoritesNav">
+          <h3 class="clickable">Load More NASA Images</h3>
+        </span>
+      </div>
+      <!-- Images Container -->
+      <div class="images-container">
+        <div class="card">
+          <a href="" title="View Full Image" target="_blank">
+            <img
+              src="https://apod.nasa.gov/apod/image/2007/msv1500crop.jpg"
+              alt="NASA Image Of Day"
+              class="card-img-top"
+            />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Title of Image</h5>
+            <p class="clickable">Add to Favorites</p>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+              ea earum, ullam minima quas voluptas beatae, temporibus rem porro
+              eum eius, quo fugit? Odio unde dolores quos exercitationem!
+              Consectetur, at. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Exercitationem illum qui neque. Sit iure libero
+              eum at, delectus aut eligendi optio eaque quas veritatis ex rerum
+              magnam, qui possimus asperiores?Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Quibusdam, dicta. Ipsa dicta
+              incidunt minima officia numquam, quae quo veniam et delectus
+              dolorum, quis ducimus. Laborum aliquid minima in vel ea.
+            </p>
+            <small class="text-muted">
+              <strong>3-25-2022</strong>
+              <span>Copyright Info</span>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Save Confirmation -->
+    <div class="save-confirmed hidden">
+      <h1>ADDED!</h1>
     </div>
     <!-- Script -->
     <script src="script.js"></script>
