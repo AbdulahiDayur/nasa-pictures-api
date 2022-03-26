@@ -13,8 +13,10 @@ const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=${co
 let resultsArray = [];
 let favorites = {};
 
-function updateDOM() {
-  resultsArray.forEach((result) => {
+function createDOMNodes(page) {
+  const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
+  console.log('Current Array: ', page, currentArray);
+  currentArray.forEach((result) => {
     // Card Container
     const card = document.createElement('div');
     card.classList.add('card');
@@ -61,8 +63,18 @@ function updateDOM() {
     link.appendChild(image);
     card.append(link, cardBody);
     imagesContainer.appendChild(card);
-    console.log(card);
+    // console.log(card);
   });
+}
+
+function updateDOM(page) {
+  // get Favs from local storage
+  if (localStorage.getItem('nasaFavorites')) {
+    favorites = JSON.parse(localStorage.getItem('nasaFavorites'));
+    console.log('LocalStorage Favorites: \n', favorites);
+    // console.log(favorites);
+  }
+  createDOMNodes(page);
 }
 
 // Get 6 Images From NASA API
@@ -71,8 +83,7 @@ async function getNasaPictures() {
     const res = await axios.get(apiUrl);
     const data = await res.data;
     resultsArray = data;
-    console.log(resultsArray);
-    updateDOM();
+    updateDOM('favorites');
   } catch (error) {
     console.log('Whoops', error);
   }
@@ -93,7 +104,7 @@ function saveFavorite(itemUrl) {
       localStorage.setItem('nasaFavorites', JSON.stringify(favorites))
     }
   });
-  console.log(favorites);
+  // console.log(favorites);
 }
 
 getNasaPictures();
